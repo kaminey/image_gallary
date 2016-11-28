@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+	<title>Image Gallary</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<h1>Gallary</h1>
+	{% load static %}
+	<a href="{% static "red_bear.jpg" %}" onclick = "return showpic(this);" title = "Red Bear">Red Bear</a><br>
+	<a href="{% static "white_dog.jpeg" %}" onclick = "return showpic(this);" title = "White Dog">White Dog</a><br>
+	<a href="{% static "horse.jpeg" %}" onclick = "return showpic(this)" title = "Horse">Horse</a><br>
+	<a href="{% static "green_lion.jpeg" %}" onclick = "return showpic(this);" title = "Green Lion">Green Lion</a><br>
+	<img id = "placeholder" src="{% static "red_bear.jpg" %}" width = "500" height="400">
+	<p id="description">Red Bear</p>
+	<script type="text/javascript">
+	function showpic (whichpic) {
+		image_location = whichpic.getAttribute("href");
+		placeholder = document.getElementById("placeholder");
+		placeholder.setAttribute("src", image_location );
+		image_title = whichpic.getAttribute("title");
+		description = document.getElementById("description");
+		description.firstChild.nodeValue = image_title;
+		return false;
+	}
+	</script>
+</body>
